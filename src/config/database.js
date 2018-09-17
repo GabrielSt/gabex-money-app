@@ -2,12 +2,11 @@ const mongoose = require('mongoose')
 mongoose.Promise = global.Promise
 
 const url = process.env.MONGOLAB_URI ? process.env.MONGOLAB_URI : 'mongodb://localhost/mymoney'
-//module.exports = mongoose.connect(encodeURI(url), { useNewUrlParser: true })
-console.log(url)
-module.exports = mongoose.connect('mongodb://@ds155862.mlab.com:55862/heroku_1vbrm3fb', {
+
+module.exports = mongoose.connect(url, {
     auth: {
-      user: "mymoneyapp",
-      password: "Qwe@96845255"
+      user: process.env.MONGOLAB_USER,
+      password: process.env.MONGOLAB_PASS
     },
     useNewUrlParser:true
       }).then(
